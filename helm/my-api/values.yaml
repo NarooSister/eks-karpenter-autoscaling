@@ -1,10 +1,10 @@
 replicaCount: 2
 
 image:
-  repository: eks-autoscaling-api
-  tag: local
+  repository: 511092105733.dkr.ecr.ap-northeast-2.amazonaws.com/eks-autoscaling-api
+  tag: v1
   pullPolicy: IfNotPresent
-
+  
 service:
   type: ClusterIP
   port: 80
