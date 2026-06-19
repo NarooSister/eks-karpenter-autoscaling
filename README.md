@@ -82,7 +82,7 @@ targetCPUUtilizationPercentage: 60
 
 `/cpu` 엔드포인트에 부하를 발생시킨 결과, CPU 사용률이 target을 초과하면서 Replica 수가 2개에서 9개까지 증가했습니다.
 
-![HPA Scale Test](./image/hpa_test_01.png)
+![HPA Scale Test](./images/hpa_test_01.png)
 
 ```text
 cpu: 2%/60%     replicas: 2
