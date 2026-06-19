@@ -1,0 +1,38 @@
+replicaCount: 2
+
+image:
+  repository: eks-autoscaling-api
+  tag: local
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+env:
+  APP_VERSION: "local"
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 256Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 60
+
+probes:
+  liveness:
+    path: /healthz/live
+    initialDelaySeconds: 10
+    periodSeconds: 10
+  readiness:
+    path: /healthz/ready
+    initialDelaySeconds: 5
+    periodSeconds: 5
