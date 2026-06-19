@@ -1,0 +1,24 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: eks-karpenter-lab
+  region: ap-northeast-2
+  version: "1.34"
+
+iam:
+  withOIDC: true
+
+vpc:
+  nat:
+    gateway: Disable
+
+managedNodeGroups:
+  - name: system-ng
+    instanceType: t3.small
+    desiredCapacity: 1
+    minSize: 1
+    maxSize: 2
+    volumeSize: 20
+    labels:
+      role: system
